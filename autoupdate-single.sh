@@ -1,1 +1,19 @@
-to be filled https://github.com/skyrid3r698/upgrade-truenas-apps/issues/1#issue-1761887816 
+#!/bin/sh
+app=plex
+
+function exists_in_list() {
+    LIST=$1
+    VALUE=$2
+    echo $LIST | grep -F -q "$VALUE"
+}
+
+upgradable=$(cli -c "app chart_release query name,update_available")
+upgradable=$(echo "$apps" | sed 's/[-+|]//g' | sed 's/name//g' | sed 's/update_available//g' | sed '/strue//g' | sed -r '/^\s*$/d' | sed '/false/d')
+echo -e "$upgradable"
+
+if exists_in_list "$upgradable" "$app"; then
+    echo "updating $app"
+    
+else
+    echo "no updates available for $app"
+fi
