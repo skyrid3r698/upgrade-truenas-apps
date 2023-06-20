@@ -13,7 +13,7 @@ echo -e "$upgradable"
 
 if exists_in_list "$upgradable" "$app"; then
     echo "updating $app"
-    cli -c "app chart_release upgrade release_name=$app
+    cli -c "app chart_release upgrade release_name=$app"
 else
     echo "no updates available for $app"
 fi
