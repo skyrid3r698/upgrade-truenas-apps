@@ -17,3 +17,4 @@ if exists_in_list "$upgradable" "$app"; then
 else
     echo "no updates available for $app"
 fi
+
