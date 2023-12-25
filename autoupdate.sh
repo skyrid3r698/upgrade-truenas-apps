@@ -1,6 +1,6 @@
 #!/bin/sh
 upgradable=$(cli -c "app chart_release query name,update_available")
-upgradable=$(echo "$apps" | sed 's/[-+|]//g' | sed 's/name//g' | sed 's/update_available//g' | sed '/strue//g' | sed -r '/^\s*$/d' | sed '/false/d')
+upgradable=$(echo "$upgradable" | sed 's/[-+|]//g' | sed 's/name//g' | sed 's/update_available//g' | sed 's/true//g' | sed -r '/^\s*$/d' | sed '/false/d')
 echo "$upgradable"
 
 if [ -z "$upgradable" ]
