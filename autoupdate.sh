@@ -1,5 +1,5 @@
 #!/bin/sh
-upgradable=$(cli -c "app query name,update_available")
+upgradable=$(cli -c "app query name,update_available") | grep true
 upgradable=$(echo "$upgradable" | sed 's/[-+|]//g' | sed 's/name//g' | sed 's/update_available//g' | sed 's/true//g' | sed -r '/^\s*$/d' | sed '/false/d')
 echo "$upgradable"
 
