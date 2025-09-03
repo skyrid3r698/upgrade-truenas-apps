@@ -1,6 +1,6 @@
 #!/bin/sh
 upgradable=$(cli -c "app query name,upgrade_available" | grep true)
-upgradable=$(echo "$upgradable" | sed 's/[|]//g' | cut -c 2- | sed 's/true//g')
+upgradable=$(echo "$upgradable" | sed 's/[| ]//g' | sed 's/true//g')
 echo "$upgradable"
 
 if [ -z "$upgradable" ]
